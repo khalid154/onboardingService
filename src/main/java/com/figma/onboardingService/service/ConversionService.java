@@ -19,9 +19,10 @@ public class ConversionService {
                 .map(step -> getOnboardingStepsDto(step)).collect(Collectors.toList());
         OnboardingData onboardingData = new OnboardingData();
         onboardingData.setOnBoardingSteps(onboardingStepsDtos);
-        OnboardingResponse onboardingResponse = new OnboardingResponse();
-        onboardingResponse.setData(onboardingData);
-        onboardingResponse.setStatusCode(StatusCode.SUCCESS.code);
+        OnboardingResponse onboardingResponse = OnboardingResponse.builder()
+                .data(onboardingData)
+                .statusCode(StatusCode.SUCCESS.code)
+                .build();
         return onboardingResponse;
     }
 
